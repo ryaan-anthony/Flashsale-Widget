@@ -1,0 +1,30 @@
+<?xml version="1.0" ?>
+<widgets>
+    <flashsale type="flashsale/list">
+        <name>Ip/Flash Sale Product List</name>
+        <description type="desc">Adds a list of special price products with live countdown.</description>
+        <parameters>
+            <template translate="label">
+                <label>Frontend Template</label>
+                <visible>1</visible>
+                <required>1</required>
+                <type>select</type>
+                <source_model>flashsale/templates</source_model>
+            </template>
+            <product_count>
+                <label>Number of Products to Display</label>
+                <visible>1</visible>
+                <required>1</required>
+                <type>text</type>
+                <value>10</value>
+            </product_count>
+            <column_count>
+                <label>Number of Columns to Display</label>
+                <visible>1</visible>
+                <required>1</required>
+                <type>text</type>
+                <value>10</value>
+            </column_count>
+        </parameters>
+    </flashsale>
+</widgets>

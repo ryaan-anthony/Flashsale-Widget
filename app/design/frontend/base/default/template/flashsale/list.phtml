@@ -1,0 +1,37 @@
+<?php
+$_productCollection = $this->getProductCollection();
+$_helper = $this->helper('catalog/output');
+$_collectionSize = $this->getProductCount();
+$_columnCount = $this->getColumnCount();
+?>
+<?php // List Mode ?>
+<div class="widget-block">
+    <ul class="products-list">
+        <?php foreach ($_productCollection as $_product): ?>
+            <?php $_productNameStripped = $this->stripTags($_product->getName(), null, true); ?>
+            <li class="item">
+                <?php
+                $currentTimestamp = Mage::getModel('core/date')->timestamp(time());
+                $timestamp = strtotime($_product->getData('special_to_date')) + 86400;
+                $timeleft = $timestamp - $currentTimestamp;
+                $image = $this->helper('catalog/image')
+                    ->init($_product, 'small_image')
+                    ->constrainOnly(TRUE)
+                    ->keepAspectRatio(TRUE)
+                    ->keepFrame(FALSE)
+                    ->resize(290, null);
+                ?>
+                <p class="flash-sale" data-expires="<?php echo $timeleft;?>"><strong>ENDS IN <span><?php echo $this->timeLeft($timeleft);?></span></strong></p>
+                <div class="product-img-box">
+                    <a href="<?php echo $_product->getProductUrl() ?>" class="product-image">
+                        <img src="<?php echo $image ?>" width="290" height="290" />
+                    </a>
+                </div>
+                <h2 class="product-name">
+                    <a href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $this->stripTags($_product->getName(), null, true) ?>"><?php echo $_helper->productAttribute($_product, $_product->getName(), 'name') ?></a>
+                </h2>
+                <?php echo $this->getPriceHtml($_product, true); ?>
+            </li>
+        <?php endforeach; ?>
+    </ul>
+</div>

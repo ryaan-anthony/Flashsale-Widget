@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Ip_Flashsale>
+            <version>0.1.0</version>
+        </Ip_Flashsale>
+    </modules>
+    <global>
+        <helpers>
+            <flashsale>
+                <class>Ip_Flashsale_Helper</class>
+            </flashsale>
+        </helpers>
+        <blocks>
+            <flashsale>
+                <class>Ip_Flashsale_Block</class>
+            </flashsale>
+        </blocks>
+        <models>
+            <flashsale>
+                <class>Ip_Flashsale_Model</class>
+            </flashsale>
+        </models>
+    </global>
+    <frontend>
+        <layout>
+            <updates>
+                <flashsale>
+                    <file>flashsale.xml</file>
+                </flashsale>
+            </updates>
+        </layout>
+    </frontend>
+</config>
